@@ -25,6 +25,8 @@ insert into album values(2, 'Hotspot', '2020');
 insert into album values(3, 'Still on My Mind', '2019');
 insert into album values(4, 'Letter to You', '2020');
 insert into album values(5, 'Promise', '1985');
+insert into album values(6, 'Introspective', '1988');
+insert into album values(7, 'Testing', '2025');
 
 --- Связь жанра и исполнителя ---
 insert into musiciangenre values(1, 1, 1);
@@ -47,6 +49,8 @@ insert into albummusician values(2, 2, 8);
 insert into albummusician values(3, 3, 6);
 insert into albummusician values(4, 4, 7);
 insert into albummusician values(5, 5, 9);
+insert into albummusician values(6, 6, 8);
+insert into albummusician values(7, 7, 2);
 
 --- Треки альбомов ---
 insert into track values(1, 'What''s on my mind', 316, 1);
@@ -109,6 +113,27 @@ insert into track values(53, 'Never as good as the first time', 299, 5);
 insert into track values(54, 'Fear', 249, 5);
 insert into track values(55, 'Tar baby', 238, 5);
 insert into track values(56, 'Maureen', 260, 5);
+
+insert into track values(57, 'Left to my own devices', 497, 6);
+insert into track values(58, 'I want a dog', 375, 6);
+insert into track values(59, 'Domino dancing', 460, 6);
+insert into track values(60, 'I''m not scared', 445, 6);
+insert into track values(61, 'Always on my mind / In my house', 524, 6);
+insert into track values(62, 'It''s alright', 543, 6);
+
+insert into track values(63, 'My own', 201, 7);
+insert into track values(64, 'own my', 202, 7);
+insert into track values(65, 'My', 203, 7);
+insert into track values(66, 'Mystery', 204, 7);
+insert into track values(67, 'by myself', 205, 7);
+insert into track values(68, 'bemy self', 204, 7);
+insert into track values(69, 'myself by', 203, 7);
+insert into track values(70, 'by myself by', 202, 7);
+insert into track values(71, 'Academy', 201, 7);
+insert into track values(72, 'premyle', 200, 7);
+insert into track values(73, 'My academy', 201, 7);
+insert into track values(74, 'Мой ласковый и нежный зверь', 201, 7);
+insert into track values(75, 'Мойдодыр', 201, 7);
 
 --- Сборники ---
 insert into collection values(1, 'The best of 2000', 2000);

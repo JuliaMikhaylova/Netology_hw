@@ -21,7 +21,8 @@ where musician_name not like '% %';
 /* --- Задание 2.5 Название треков, которые содержат слово «мой» или «my» --- */
 select track_name
 from track
-where track_name like '%мой%' or track_name like '%my%';
+where track_name ilike 'my %' or track_name ilike '% my' or track_name ilike 'my' or track_name ilike '% my %'
+or track_name ilike 'мой %' or track_name ilike '% мой' or track_name ilike '% мой %' or track_name ilike 'мой';
 
 
 /* --- Задание 3.1 Количество исполнителей в каждом жанре --- */
@@ -45,11 +46,14 @@ group by album) a
 left outer join album b on a.album = b.album_id;
 
 /* --- Задание 3.4 Все исполнители, которые не выпустили альбомы в 2020 году --- */
-select m.musician_name 
-from musician m 
-left outer join albummusician am on m.musician_id = am.musician_id 
-left outer join album a on am.album_id = a.album_id 
-where a.year_release <> '2020' or am.album_id is null;
+select musician_name
+from musician
+where musician_name not in (
+select m.musician_name
+from musician m
+left outer join albummusician am on m.musician_id = am.musician_id
+left outer join album a on am.album_id = a.album_id
+where a.year_release = '2020');
 
 /* --- Задание 3.5 Названия сборников, в которых присутствует конкретный исполнитель (выберите его сами) --- */
 select distinct c.collection_title 
@@ -83,13 +87,10 @@ left outer join track t on a.album_id = t.album
 where t.duration = (select min(duration) from track);
 
 /* --- Задание 4.4 Названия альбомов, содержащих наименьшее количество треков --- */
-select a.album_title, c.count 
-from album a 
-left outer join 
-(select album, count(track_id) as count
-from track
-group by album) c on a.album_id = c.album 
-where c.count = (select min(a.count) from (select album, count(track_id) as count from track group by album) a);
-
+select a.album_title, count(t.track_id)
+from album a
+left outer join track t on a.album_id = t.album
+group by a.album_id
+having count(t.track_id) = (select count(track_id) from track group by album order by 1 limit 1);
 
 
